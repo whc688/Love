@@ -1,19 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" >
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <title>I Love U</title>
   <link rel="stylesheet" href="./normalize.min.css">
-
-
 </head>
 <body>
-<!-- partial:index.partial.html -->
+  <!-- 添加用户交互按钮 -->
+  <button id="playButton">播放音乐</button>
+  
+  <!-- 音乐播放器 -->
+  <audio id="backgroundMusic" loop>
+    <source src="dont worry.mp3">
+  </audio>
 
-<!-- partial -->
-  <script src='./jquery.min.js'></script><script  src="./script.js"></script>
-
-  <audio autoplay="" loop=""> <source src="dont worry.mp3"></audio>
-
+  <!-- 加载脚本 -->
+  <script src='./jquery.min.js'></script>
+  <script src="./script.js"></script>
+  <script>
+    // 使用用户交互触发音频播放
+    document.getElementById('playButton').addEventListener('click', function () {
+      const music = document.getElementById('backgroundMusic');
+      music.play().then(() => {
+        alert('音乐开始播放啦！');
+      }).catch(error => {
+        console.error('无法播放音乐：', error);
+      });
+    });
+  </script>
 </body>
 </html>
